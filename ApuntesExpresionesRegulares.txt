@@ -1,0 +1,146 @@
+Ejemplo1
+Selecccionar cada uno de los caracteres
+.
+
+Ejemplo2
+Encontrar los numeros o digitos
+\d
+
+Ejemplo3
+Encontrar tres numeros seguidos
+\d\d\d
+
+Ejemplo4
+Espacios o invisibles en blanco
+\w
+
+Ejemplo5
+Para seleccionar letras de la a-z (Mayusculas y minusculas) ,digitos y guion bajo ()
+\w o lo que es lo mismo [a-z-A-Z-0-9_]
+
+Ejemplo6
+Seleccionar todos los digitos
+[0-9]
+
+Ejemplo7
+Seleccionar todas las letras minusculas de la a-z
+[a-z]
+
+Ejemplo8
+Seleccionar todas las letras mayusculas de la A-z
+[a-z]
+
+Ejemplo9
+Ahora vamos a utilizar el "\" seguido de un caracter. Se utiliza para escapar e indica que ese caracter se incluye
+Para seleccionar letras de la a-z (Mayusculas y minusculas) ,digitos , guion bajo () y en este caso tambien
+se incluye el ".". Si pondriamos el "." sin el slash ("\") estariamos indicando cualquier caracter y lo que queremos
+indicar es que se añaden los puntos y no cualquier caracter
+
+[a-z-A-Z-0-9_\.]
+
+Ejemplo 10
+Encuentra todos los numeros que quieras pero al final ha de haber una letra de la [a-z]
+\d+[a-z] Ejemplo de resultado : 1234567890a
+
+Ejemplo11
+Queremos que haya un caracter de la [a-z] , logicamente en minusculas, pero que anteriormente pueda o
+no tener un numero o numeros
+
+\d*[a-z]
+
+Ejemplos : Nos vale tanto esto "Rodrigo" como esto "1234567890"
+
+Ejemplo12
+La expresion entera debe terminar en s. En este ejemplo tiene que haber una letra de la [a-z] los numeros
+son opcionales y debe acabar en s minuscula. Si queremos que la s seria opcional '?s'
+
+\d*[a-z]s
+
+Ejemplo 13
+Si queremos una cadena que tenga varios digitos antes de la letra que va de la [a-z] esta letra puede existir o no.
+En este caso no existe pero obligatoriamente la metemos porque es una s y luego pueden venir o uno o varios numeros
+
+\d*[a-z]?s\d* Ejemplo 123456s910
+
+Ejemplo 14
+Trabajando con contadores. Queremos una expresion regular en la que tengamos entre 2 y 5 digitos
+\d{2-5}
+
+Ejemplos que valen 12, 12345, 123, 
+
+Ejemplo 14
+Trabajando con contadores. Queremos una expresion regular en la que tengamos entre 4 y mas digitos
+\d{4,}
+
+
+Ejemplo 15
+Trabajando con contadores. Imaginemos una contraseña que tenga al menos 5 caracteres. Recordemos que w
+admite mayusculas, minusculas, digitos y '_'
+
+\w{5,}
+
+Ejemplo 16
+Imaginemonos que tenemos un .csv con una serie de datos delimitados por ','
+
+csv1,csv2,csv3,csv4,csv5
+1234,543,234,567,567
+432,765,368,285,986
+
+Si queremos coger cada cacho hasta la ',' utilizaremos la siguiente expresion '.+?,'
+
+
+Ejemplos que valen 1234, 123445, 12423423423
+
+Ejemplo 17
+Negar. Si queremos negar numeros ponemos en mayusculas. Asi pues:
+
+\D -- No numeros
+\W -- Todo lo que son letras de la a-z tanto mayusculas como minusculas, numeros y barra baja(_)
+\S -- Todo lo que no sean espacios en blanco
+
+
+Ejemplo18 -- Tambien podemos negar con el caracter '^' . Que indica que nos valdria o haria match a lo opuesto
+que nosotros le marcamos . Por ejemplo , en este ejemplo seleciona los digitos que no van del 0 al 5
+^[0-5]
+
+En cuanto a los delimitadores 
+* - Indica '0' o "muchos" (mas de 1)
+? - Indica '0' o '1'
+
+
+Contadores:
+Aplicando a un carácter que lo preceda se puede colocar entre llaves de esta forma, para indicarle que busque la cantidad deseada de caracteres.
+
+{Cota inferiror, Cota superior}
+
+Ejemplo:
+
+
+
+
+El ? indica al patrón que encuentre las coincidencias de manera rápida (o greedy); es decir, devolviendo el resultado más pequeño que haga match hasta donde se encuentra el delimitador, y esto lo haga tantas veces como sea posible dentro de la cadena.
+Por ejemplo, tenemos:
+csv1,csv2,csv3,csv4,csv5
+echo1,echo2,echo3,echo4
+12,123,1234,12345,123456
+si utilizo .*, Va a seleccionar cada línea y el match va a ser muy grande, hasta la última coma, pero, si utilizo .+?, los match son más pequeños, y son separados por la última coma.
+Para incluir la última columna, se construye una nueva clase que incluya a la coma y a un espacio en blanco o un salto de línea, así: .+?[,\n]{1,1}.
+\d{0,2}: Esto buscara 0, 1, 2 dígitos
+\d{2,2}: Esto buscara 2 dígitos
+\d{2}: Esto buscara 2 dígitos
+\d{2,}: Esto buscara 2 o más dígitos.
+\d{2,4}: Esto buscara 2, 3, 4 dígitos.
+
+
+
+Paginas para probar expresiones regulares
+- debuggex.com
+- regexr.com
+- https://regex101.com/
+
+
+
+
+
+
+
