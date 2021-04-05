@@ -1,0 +1,16 @@
+http://b3co.com/
+- s=fotografia
+- mode=search
+- module=blog
+
+
+
+Regex [\?&](\w+)=([^&\n]+)
+Replace - $1=$2
+
+Me trae
+
+http://b3co.com/
+- s=fotografia
+- mode=search
+- module=blog
