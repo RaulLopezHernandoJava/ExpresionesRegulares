@@ -141,6 +141,49 @@ Paginas para probar expresiones regulares
 
 
 
+Trabajando para filtrar archivos "movies.csv"
+
+Si en este archivo seleccionamos solo las peliculas y su año con el siguiente regex
+
+\d+::([\w\s:,\(\)'\.\-&!\/]+)\s\((\d{4})\)::.*$
+
+Conseguiremos tener este aspecto en la lista
+
+Revolutionary Road,2008
+
+En vez de este
+
+Revolutionary Road (2008)::Drama|Romance
+
+Para todas las peliculas
+
+Como hacemos esto en Visual Studio Code, muy sencillo
+
+Vamos a este mismo CSV y hacemos control+h. Una vez hay metemos en Find el Regex
+y en el replace con el $ seleccionamos los dos grupos a cambiar. Recordemos que se considera
+grupo en un regex a cualquier agrupacion entre (). Asi pues aqui tenemos 2 y en el replace
+pondremos 
+
+$1,$2 saliendo las peliculas de esta forma Revolutionary Road:2008
+
+SQL 
+
+Jugada para SQL. Imaginemos que queremos insertar en nuestra base de datos 'sql' los datos
+del titulo y el año. Para ello en el replace solo tendriamos que meter los datos de los grupos
+anteriormente formados como variables de la sentencia de sql . Por ejemplo podriamostener en el replace
+
+insert into movies (year,title) values ($2,'$1')
+
+JSON
+
+Tambien se puede hacer la misma jugada pero con un JSON
+
+{title:"$1", year:$2}
+
+
+
+
+
 
 
 
